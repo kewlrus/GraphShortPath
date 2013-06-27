@@ -4,7 +4,7 @@ ActorAnimGraph* StrikerAnimGraph::FindAAG(const char* ActorName)
 {
 	for (std::vector<ActorAnimGraph*>::size_type i = 0; i < AAG.size(); i++) 
 	{
-		if (!strcmp(AAG.at(i)->GetName(), ActorName))
+		if (!AAG.at(i)->GetName().compare(ActorName))
 		{
 			return AAG.at(i);
 			break;

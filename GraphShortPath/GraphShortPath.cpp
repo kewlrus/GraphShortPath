@@ -5,38 +5,37 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	StrikerAnimGraph* SAG = new StrikerAnimGraph();
-	SAG->AddActor("ACTOR1");
-	SAG->AddActor("ACTOR2");
+	std::auto_ptr<StrikerAnimGraph> SAG(new StrikerAnimGraph());
+	SAG.get()->AddActor("ACTOR1");
+	SAG.get()->AddActor("ACTOR2");
 
-	SAG->AddNode("ACTOR1", "NODE1", 3.0f);
-	SAG->AddNode("ACTOR1", "NODE2", 2.0f);
-	SAG->AddNode("ACTOR1", "NODE3", 1.0f);
-	SAG->AddNode("ACTOR1", "NODE4", 1.0f);
+	SAG.get()->AddNode("ACTOR1", "NODE1", 3.0f);
+	SAG.get()->AddNode("ACTOR1", "NODE2", 2.0f);
+	SAG.get()->AddNode("ACTOR1", "NODE3", 1.0f);
+	SAG.get()->AddNode("ACTOR1", "NODE4", 1.0f);
 
-	SAG->AddEdge("ACTOR1", "NODE1", "NODE2");
-	SAG->AddEdge("ACTOR1", "NODE2", "NODE3");
-	SAG->AddEdge("ACTOR1", "NODE3", "NODE1");
-	SAG->AddEdge("ACTOR1", "NODE3", "NODE4");
+	SAG.get()->AddEdge("ACTOR1", "NODE1", "NODE2");
+	SAG.get()->AddEdge("ACTOR1", "NODE2", "NODE3");
+	SAG.get()->AddEdge("ACTOR1", "NODE3", "NODE1");
+	SAG.get()->AddEdge("ACTOR1", "NODE3", "NODE4");
 	
-	SAG->AddNode("ACTOR2", "NODE1", 3.0f);
-	SAG->AddNode("ACTOR2", "NODE2", 2.0f);
-	SAG->AddNode("ACTOR2", "NODE3", 1.0f);
-	SAG->AddNode("ACTOR2", "NODE4", 1.0f);
+	SAG.get()->AddNode("ACTOR2", "NODE1", 3.0f);
+	SAG.get()->AddNode("ACTOR2", "NODE2", 2.0f);
+	SAG.get()->AddNode("ACTOR2", "NODE3", 1.0f);
+	SAG.get()->AddNode("ACTOR2", "NODE4", 1.0f);
 
-	SAG->AddEdge("ACTOR2", "NODE1", "NODE3");
-	SAG->AddEdge("ACTOR2", "NODE1", "NODE4");
-	SAG->AddEdge("ACTOR2", "NODE3", "NODE2");
+	SAG.get()->AddEdge("ACTOR2", "NODE1", "NODE3");
+	SAG.get()->AddEdge("ACTOR2", "NODE1", "NODE4");
+	SAG.get()->AddEdge("ACTOR2", "NODE3", "NODE2");
 	
-	std::vector<std::string>* path1 = SAG->GetPath("ACTOR1", "NODE3", "NODE1");
-	std::vector<std::string>* path2 = SAG->GetPath("ACTOR1", "NODE2", "NODE3");
-	std::vector<std::string>* path3 = SAG->GetPath("ACTOR1", "NODE1", "NODE4");
+	std::auto_ptr<std::vector<std::string>> path1(SAG.get()->GetPath("ACTOR1", "NODE3", "NODE1"));
+	std::auto_ptr<std::vector<std::string>> path2(SAG.get()->GetPath("ACTOR1", "NODE2", "NODE3"));
+	std::auto_ptr<std::vector<std::string>> path3(SAG.get()->GetPath("ACTOR1", "NODE1", "NODE4"));
 
-	std::vector<std::string>* path4 = SAG->GetPath("ACTOR2", "NODE1", "NODE2");
+	std::auto_ptr<std::vector<std::string>> path4(SAG.get()->GetPath("ACTOR2", "NODE1", "NODE2"));
 
-	std::auto_ptr<std::vector<std::string>> sp(SAG->GetPath("ACTOR2", "NODE1", "NODE2"));
 	_getch();
-	delete SAG;
+	//delete SAG;
 	return 0;
 }
 

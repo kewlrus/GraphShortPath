@@ -55,25 +55,22 @@ private:
 	std::vector<edge> edge_array;
 	std::vector<cost> weights;
 
-	//std::vector<std::string> nodestest;
-
 	unsigned int num_edges;
 	unsigned int N;
 	
 private:
-	std::auto_ptr<const char> ActorName;
+	std::string ActorName;
 
 public:
 	ActorAnimGraph(const char* Name)
 	{
-		ActorName = std::auto_ptr<const char>(Name);
+		ActorName = Name;
 		num_edges = 0;
 		N = 0;
 	};
 
 	void AddNode(const char* name, float duration)
 	{
-		//nodestest.push_back(std::string(name));
 		nodes.push_back(name);
 		durations.push_back(duration);
 		N++;
@@ -206,7 +203,7 @@ public:
 		return NULL;
 	}
 
-	const char*	GetName(void){ return ActorName.get(); };
+	std::string	GetName(void){ return ActorName; };
 
 	virtual ~ActorAnimGraph(void)
 	{
