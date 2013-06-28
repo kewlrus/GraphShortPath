@@ -113,7 +113,13 @@ public:
 			weights.push_back(durations.at(n1) + durations.at(n2));
 		}
 		else
-			printf("Edge (%s, %s) isnt found!\n", name_source, name_dest);
+		{
+			if (n1 < 0)
+				printf("Node (%s) isnt found!\n", name_source);
+
+			if (n2 < 0)
+				printf("Node (%s) isnt found!\n", name_dest);
+		}
 	}
 
 	std::vector<std::string>* GetPath(const char* name_source, const char* name_goal)
@@ -177,16 +183,16 @@ public:
 				  if(p1[v] == v)
 					break;
 				}
-				std::cout << "Shortest path from " << nodes.at(start) << " to " << nodes.at(goal) << ": ";
+			//	std::cout << "Shortest path from " << nodes.at(start) << " to " << nodes.at(goal) << ": ";
 				std::list<vertex>::iterator spi = shortest_path.begin();
-				std::cout << nodes.at(start);
+			//	std::cout << nodes.at(start);
 				result->push_back(nodes.at(start));
 				for(++spi; spi != shortest_path.end(); ++spi)
 				{
-				  std::cout << " -> " << nodes.at(*spi);
+			//	  std::cout << " -> " << nodes.at(*spi);
 				  result->push_back(nodes.at(*spi));
 				}
-				std::cout << std::endl << "Total travel time: " << d1[goal] << std::endl;
+			//	std::cout << std::endl << "Total travel time: " << d1[goal] << std::endl;
 
 				//endt = clock();
 				//clock_t time = endt - startt;
@@ -198,7 +204,15 @@ public:
 			}
 		}
 		else
-			printf("Node %s or %s isnt found!\n", name_source, name_goal);
+		{
+			if (n1 < 0)
+				printf("Node (%s) isnt found!\n", name_source);
+
+			if (n2 < 0)
+				printf("Node (%s) isnt found!\n", name_goal);
+		}
+		//else
+		//	printf("Node %s or %s isnt found!\n", name_source, name_goal);
 
 		return NULL;
 	}
