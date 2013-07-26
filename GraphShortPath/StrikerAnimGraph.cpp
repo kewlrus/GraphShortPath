@@ -25,6 +25,9 @@ void StrikerAnimGraph::AddNode(const char* ActorName, const char* name, float du
 
 	if (FindedAAG)
 		FindedAAG->AddNode(name, duration);
+	else
+		printf("\nAddNode: Graph (%s) isnt found!\n", ActorName);
+
 }
 
 void StrikerAnimGraph::AddEdge(const char* ActorName, const char* name_source, const char* name_dest)
@@ -33,6 +36,8 @@ void StrikerAnimGraph::AddEdge(const char* ActorName, const char* name_source, c
 
 	if (FindedAAG)
 		FindedAAG->AddEdge(name_source, name_dest);
+	else
+		printf("\nAddEdge: Graph (%s) isnt found!\n", ActorName);
 }
 
 std::vector<std::string>* StrikerAnimGraph::GetPath(const char* ActorName, const char* name_source, const char* name_goal)
@@ -41,6 +46,8 @@ std::vector<std::string>* StrikerAnimGraph::GetPath(const char* ActorName, const
 
 	if (FindedAAG)
 		return FindedAAG->GetPath(name_source, name_goal);
+	else
+		printf("\nGetPath: Graph (%s) isnt found!\n", ActorName);
 	
 	return NULL;
 }

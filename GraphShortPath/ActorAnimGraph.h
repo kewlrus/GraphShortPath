@@ -115,10 +115,10 @@ public:
 		else
 		{
 			if (n1 < 0)
-				printf("Node (%s) isnt found!\n", name_source);
+				printf("\nAddEdge: Node (%s) isnt found!\n", name_source);
 
 			if (n2 < 0)
-				printf("Node (%s) isnt found!\n", name_dest);
+				printf("\nAddEdge: Node (%s) isnt found!\n", name_dest);
 		}
 	}
 
@@ -183,36 +183,24 @@ public:
 				  if(p1[v] == v)
 					break;
 				}
-			//	std::cout << "Shortest path from " << nodes.at(start) << " to " << nodes.at(goal) << ": ";
 				std::list<vertex>::iterator spi = shortest_path.begin();
-			//	std::cout << nodes.at(start);
 				result->push_back(nodes.at(start));
 				for(++spi; spi != shortest_path.end(); ++spi)
 				{
-			//	  std::cout << " -> " << nodes.at(*spi);
 				  result->push_back(nodes.at(*spi));
 				}
-			//	std::cout << std::endl << "Total travel time: " << d1[goal] << std::endl;
 
-				//endt = clock();
-				//clock_t time = endt - startt;
-				//cout << endl << "time: " << time <<endl;
-
-				//_getch();
-				//return 0;
 				return result;
 			}
 		}
 		else
 		{
 			if (n1 < 0)
-				printf("Node (%s) isnt found!\n", name_source);
+				printf("\GetPath: Node (%s) isnt found!\n", name_source);
 
 			if (n2 < 0)
-				printf("Node (%s) isnt found!\n", name_goal);
+				printf("\GetPath: Node (%s) isnt found!\n", name_goal);
 		}
-		//else
-		//	printf("Node %s or %s isnt found!\n", name_source, name_goal);
 
 		return NULL;
 	}
@@ -221,6 +209,5 @@ public:
 
 	virtual ~ActorAnimGraph(void)
 	{
-		std::cout << "deleteActorAnimGraph"; 
 	};
 };
